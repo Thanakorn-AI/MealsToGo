@@ -1,26 +1,41 @@
 import { StatusBar as ExpoStatusBar } from "expo-status-bar";
-import React from "react";
-import { StatusBar, SafeAreaView, View, Text, StyleSheet, Platform } from "react-native";
+import React, { useState } from "react";
+import {
+  StatusBar,
+  SafeAreaView,
+  View,
+  Text,
+  StyleSheet,
+  Platform,
+} from "react-native";
+import { Searchbar } from "react-native-paper"; // Import Searchbar
 
 // const isAndroid = Platform.OS === "android";
-
-console.log(StatusBar.currentHeight);
+// console.log(StatusBar.currentHeight);
 
 export default function Index() {
-  return (
-    <> 
-    <SafeAreaView style={styles.container}>
-      {/* Search Section */}
-      <View style={styles.searchSection}>
-        <Text style={styles.searchText}>Thanakorn</Text>
-      </View>
+  const [searchQuery, setSearchQuery] = useState(""); // State to manage search input
+  const onChangeSearch = (query) => setSearchQuery(query);
 
-      {/* List Section */}
-      <View style={styles.listSection}>
-        <Text style={styles.listText}>List</Text>
-      </View>
-    </SafeAreaView>
-    <ExpoStatusBar style="auto" />
+  return (
+    <>
+      <SafeAreaView style={styles.container}>
+        {/* Search Section */}
+        <View style={styles.searchSection}>
+          <Searchbar
+            placeholder="Search"
+            onChangeText={onChangeSearch} // Handle text changes
+            value={searchQuery} // Bind search query state
+            style={styles.searchbar} // Optional: Custom styles for the Searchbar
+          />
+        </View>
+
+        {/* List Section */}
+        <View style={styles.listSection}>
+          <Text style={styles.listText}>List</Text>
+        </View>
+      </SafeAreaView>
+      <ExpoStatusBar style="auto" />
     </>
   );
 }
@@ -35,14 +50,14 @@ const styles = StyleSheet.create({
   searchSection: {
     backgroundColor: "green",
     height: 50, // Adjust the height of the search section
-   // padding: 16,
+    // padding: 16,
     justifyContent: "center",
     alignItems: "center",
   },
-  searchText: {
-    color: "white",
-    fontWeight: "bold",
-    fontSize: 18,
+  searchbar: {
+    flex: 1, // Make the Searchbar fill the available space
+    backgroundColor: "white", // Optional: Customize background
+    borderRadius: 25, // Optional: Rounded corners
   },
   listSection: {
     backgroundColor: "blue",
