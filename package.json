@@ -14,10 +14,14 @@
     "expo-status-bar": "~2.0.0",
     "react": "18.3.1",
     "react-native": "0.76.5",
-    "react-native-paper": "^5.12.5"
+    "react-native-paper": "^5.12.5",
+    "react-native-safe-area-context": "^5.0.0",
+    "react-native-vector-icons": "^10.2.0",
+    "styled-components": "^6.1.14"
   },
   "devDependencies": {
     "@babel/core": "^7.20.0",
+    "@babel/preset-env": "^7.26.0",
     "prettier": "^3.4.2"
   },
   "private": true

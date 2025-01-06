@@ -1,6 +1,14 @@
 import React from "react";
+import styled from "styled-components/native";
 import { StyleSheet } from "react-native";
 import { Card, Text } from "react-native-paper";
+
+const Title = styled.Text`
+  margin-top: 8px; /* Add spacing between image and text */
+  font-size: 16px;
+  font-weight: bold;
+  text-align: center; /* Center align the text */
+`;
 
 
 export const RestaurantInfo = ({ restaurant = {} }) => {
@@ -24,7 +32,7 @@ export const RestaurantInfo = ({ restaurant = {} }) => {
           
           {/* Display Restaurant Name */}
           <Card.Content>
-            <Text style={styles.title}>{name}</Text>
+          <Title>{name}</Title>
           </Card.Content>
         </Card>
       );
@@ -40,11 +48,5 @@ const styles = StyleSheet.create({
     },
     cover: {
       height: 180, // Adjust height of the image
-    },
-    title: {
-      marginTop: 8, // Add spacing between image and text
-      fontSize: 16,
-      fontWeight: "bold",
-      textAlign: "center", // Center align the text
     },
   });
