@@ -1,6 +1,8 @@
 import { StatusBar as ExpoStatusBar } from "expo-status-bar";
-import React, { useState } from "react";
+import React from "react";
 import { RestaurantsScreen } from "./src/features/restaurants/screens/restaurants.screen";
+import { ThemeProvider } from "styled-components/native";
+import { theme } from "./src/infrastructure/theme";
 
 // const isAndroid = Platform.OS === "android";
 // console.log(StatusBar.currentHeight);
@@ -8,9 +10,10 @@ import { RestaurantsScreen } from "./src/features/restaurants/screens/restaurant
 export default function Index() {
   return (
     <>
-      <RestaurantsScreen />
+      <ThemeProvider theme={theme}>
+        <RestaurantsScreen />
+      </ThemeProvider>
       <ExpoStatusBar style="auto" />
     </>
   );
 }
-
