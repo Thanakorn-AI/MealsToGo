@@ -10,7 +10,7 @@ const SafeContainer = styled.SafeAreaView`
   margin-top: ${Platform.OS === "android"
     ? `${StatusBar.currentHeight || 0}px`
     : "0px"};
-  background-color: ${(props) => props.theme.colors.bg.primary}; /* Optional: Set the background color */
+  background-color: ${(props) => props.theme.colors.bg.secondary}; /* Optional: Set the background color */
 `;
 
 const SearchSection = styled.View`
@@ -34,7 +34,7 @@ const ListSection = styled.View`
 `;
 
 const ListText = styled.Text`
-  color: ${(props) => props.theme.colors.bg.primary};
+  color: ${(props) => props.theme.colors.text.success};
   font-weight: ${(props) => props.theme.fontWeights.bold};
   font-size:  ${(props) => props.theme.sizes[1]};
   text-align: center; /* Center align the text */
