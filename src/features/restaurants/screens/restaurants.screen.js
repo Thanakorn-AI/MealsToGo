@@ -14,7 +14,7 @@ const SafeContainer = styled.SafeAreaView`
 `;
 
 const SearchSection = styled.View`
-  padding: 16px;
+  padding: ${(props) => props.theme.space[3]};
 `;
 
 const StyledSearchbar = styled(Searchbar)`
@@ -24,19 +24,19 @@ const StyledSearchbar = styled(Searchbar)`
   shadow-offset: 0px 2px;
   shadow-opacity: 0.2;
   shadow-radius: 4px;
-  background-color: white;
+  background-color:  ${(props) => props.theme.colors.bg.primary};
 `;
 
 const ListSection = styled.View`
   flex: 1;
-  padding: 16px;
-  background-color: blue;
+  padding: ${(props) => props.theme.space[3]};
+  background-color: ${(props) => props.theme.space[3]};
 `;
 
 const ListText = styled.Text`
-  color: white;
-  font-weight: bold;
-  font-size: 18px;
+  color: ${(props) => props.theme.colors.bg.primary};
+  font-weight: ${(props) => props.theme.fontWeights.bold};
+  font-size:  ${(props) => props.theme.sizes[1]};
   text-align: center; /* Center align the text */
 `;
 
