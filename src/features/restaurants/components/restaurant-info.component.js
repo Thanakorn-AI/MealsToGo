@@ -4,19 +4,21 @@ import { Card } from "react-native-paper";
 
 // Styled components
 const StyledCard = styled(Card)`
-  margin: 16px; /* Add spacing around the card */
+  margin: ${(props) => props.theme.space[3]}; /* Add spacing around the card */
   elevation: 4; /* Optional: Add shadow for Android */
-  border-radius: 8px; /* Optional: Rounded corners */
-  background-color: white; /* Ensure consistent background color */
+  border-radius: ${(props) =>
+    props.theme.space[2]}; /* Optional: Rounded corners */
+  background-color: ${(props) =>
+    props.theme.colors.bg.primary}; /* Ensure consistent background color */
 `;
 
 const StyledCardCover = styled(Card.Cover)`
-  height: 180px; /* Adjust height of the image */
+  height: ${(props) => props.theme.sizes[5]}; /* Adjust height of the image */
 `;
 
 const Title = styled.Text`
   margin-top: 8px; /* Add spacing between image and text */
-  font-size: 16px;
+  font-size: ${(props) => props.theme.sizes[1]};
   font-weight: bold;
   text-align: center; /* Center align the text */
 `;

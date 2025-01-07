@@ -10,7 +10,7 @@ const SafeContainer = styled.SafeAreaView`
   margin-top: ${Platform.OS === "android"
     ? `${StatusBar.currentHeight || 0}px`
     : "0px"};
-  background-color: white; /* Optional: Set the background color */
+  background-color: ${(props) => props.theme.colors.bg.primary}; /* Optional: Set the background color */
 `;
 
 const SearchSection = styled.View`
@@ -23,7 +23,7 @@ const StyledSearchbar = styled(Searchbar)`
   shadow-color: #000;
   shadow-offset: 0px 2px;
   shadow-opacity: 0.2;
-  shadow-radius: 4px;
+  shadow-radius: ${(props) => props.theme.space[1]};
   background-color:  ${(props) => props.theme.colors.bg.primary};
 `;
 
