@@ -1,7 +1,7 @@
 import React, { useState } from "react"; // Added useState import
 import styled from "styled-components/native"; // Import styled-components
 import { Searchbar } from "react-native-paper"; // Import Searchbar
-import { StatusBar, Platform } from "react-native";
+import { StatusBar, Platform, FlatList } from "react-native";
 import { RestaurantInfo } from "../components/restaurant-info.component";
 
 // Styled Components
@@ -10,7 +10,8 @@ const SafeContainer = styled.SafeAreaView`
   margin-top: ${Platform.OS === "android"
     ? `${StatusBar.currentHeight || 0}px`
     : "0px"};
-  background-color: ${(props) => props.theme.colors.bg.secondary}; /* Optional: Set the background color */
+  background-color: ${(props) =>
+    props.theme.colors.bg.secondary}; /* Optional: Set the background color */
 `;
 
 const SearchSection = styled.View`
@@ -24,20 +25,13 @@ const StyledSearchbar = styled(Searchbar)`
   shadow-offset: 0px 2px;
   shadow-opacity: 0.2;
   shadow-radius: ${(props) => props.theme.space[1]};
-  background-color:  ${(props) => props.theme.colors.bg.primary};
+  background-color: ${(props) => props.theme.colors.bg.primary};
 `;
 
 const ListSection = styled.View`
   flex: 1;
   padding: ${(props) => props.theme.space[3]};
   background-color: ${(props) => props.theme.space[3]};
-`;
-
-const ListText = styled.Text`
-  color: ${(props) => props.theme.colors.text.success};
-  font-weight: ${(props) => props.theme.fontWeights.bold};
-  font-size:  ${(props) => props.theme.sizes[1]};
-  text-align: center; /* Center align the text */
 `;
 
 // RestaurantsScreen Component
@@ -58,12 +52,27 @@ export const RestaurantsScreen = () => {
           value={searchQuery} // Bind search query state
         />
       </SearchSection>
-
-      {/* List Section */}
-      <ListSection>
-        <RestaurantInfo />
-        <ListText>Some Text Here</ListText> {/* Example ListText */}
-      </ListSection>
+      <FlatList
+        data={[
+          { name: 1 },
+          { name: 2 },
+          { name: 3 },
+          { name: 4 },
+          { name: 5 },
+          { name: 6 },
+          { name: 7 },
+          { name: 8 },
+          { name: 9 },
+          { name: 10 },
+          { name: 11 },
+          { name: 12 },
+          { name: 13 },
+          { name: 14 },
+        ]}
+        renderItem={() => <RestaurantInfo />}
+        keyExtractor={(item) => item.name}
+        contentContainerStyle={{ padding: 16 }}
+      />
     </SafeContainer>
   );
 };

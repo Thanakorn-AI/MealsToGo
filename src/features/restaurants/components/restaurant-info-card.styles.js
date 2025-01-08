@@ -1,7 +1,6 @@
 import styled from "styled-components/native";
 import { Card } from "react-native-paper";
 
-
 // Styled components
 export const StyledCard = styled(Card)`
   margin: ${(props) => props.theme.space[3]}; /* Add spacing around the card */
