@@ -1,18 +1,11 @@
 import React, { useState } from "react"; // Added useState import
 import styled from "styled-components/native"; // Import styled-components
 import { Searchbar } from "react-native-paper"; // Import Searchbar
-import { StatusBar, Platform, FlatList } from "react-native";
+import { FlatList } from "react-native";
 import { RestaurantInfo } from "../components/restaurant-info.component";
-
+import { SafeContainer } from "../../../components/utility/safe-container.component";
 // Styled Components
-const SafeContainer = styled.SafeAreaView`
-  flex: 1;
-  margin-top: ${Platform.OS === "android"
-    ? `${StatusBar.currentHeight || 0}px`
-    : "0px"};
-  background-color: ${(props) =>
-    props.theme.colors.bg.secondary}; /* Optional: Set the background color */
-`;
+
 
 const SearchSection = styled.View`
   padding: ${(props) => props.theme.space[3]};
