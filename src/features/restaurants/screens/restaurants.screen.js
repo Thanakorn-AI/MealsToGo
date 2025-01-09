@@ -28,11 +28,13 @@ const StyledSearchbar = styled(Searchbar)`
   background-color: ${(props) => props.theme.colors.bg.primary};
 `;
 
-const ListSection = styled.View`
-  flex: 1;
-  padding: ${(props) => props.theme.space[3]};
-  background-color: ${(props) => props.theme.space[3]};
-`;
+const RestaurantList = styled(FlatList).attrs({
+  contentContainerStyle: {
+    padding: 16,
+  },
+})``;
+
+
 
 // RestaurantsScreen Component
 export const RestaurantsScreen = () => {
@@ -52,7 +54,7 @@ export const RestaurantsScreen = () => {
           value={searchQuery} // Bind search query state
         />
       </SearchSection>
-      <FlatList
+      <RestaurantList
         data={[
           { name: 1 },
           { name: 2 },
