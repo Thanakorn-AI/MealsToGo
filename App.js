@@ -19,6 +19,11 @@ import { Ionicons } from "@expo/vector-icons";
 import { SafeContainer } from "./src/components/utility/safe-container.component";
 // const isAndroid = Platform.OS === "android";
 // console.log(StatusBar.currentHeight);
+import { restaurantsRequest } from "./src/services/restaurants/mock/restaurants.service";
+
+
+
+
 
 function MapScreen() {
   return (
