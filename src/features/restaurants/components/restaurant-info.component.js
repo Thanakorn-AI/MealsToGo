@@ -54,7 +54,7 @@ export const RestaurantInfo = ({ restaurant = {} }) => {
             <View style={{ flexDirection: "row", alignItems: "center" }}>
               {/* Closed Temporarily Text */}
               {isClosedTemporarily && (
-                <Text style={{ color: "red", marginRight: 8, fontSize: 9 }}>
+                <Text style={{ color: "red", marginRight: 8, fontSize: 9, paddingTop: 10 }}>
                   CLOSED TEMPORARILY
                 </Text>
               )}

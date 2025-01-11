@@ -1,11 +1,11 @@
-import React, { useState } from "react"; // Added useState import
+import React, { useState, useContext } from "react"; // Added useState import
 import styled from "styled-components/native"; // Import styled-components
 import { Searchbar } from "react-native-paper"; // Import Searchbar
-import { FlatList } from "react-native";
+import { FlatList, ActivityIndicator, View } from "react-native";
 import { RestaurantInfo } from "../components/restaurant-info.component";
 import { SafeContainer } from "../../../components/utility/safe-container.component";
+import { RestaurantsContext } from "../../../services/restaurants/restaurants.context";
 // Styled Components
-
 
 const SearchSection = styled.View`
   padding: ${(props) => props.theme.space[3]};
@@ -27,10 +27,17 @@ const RestaurantList = styled(FlatList).attrs({
   },
 })``;
 
-
+const LoadingContainer = styled(View)`
+  flex: 1;
+  justify-content: center;
+  align-items: center;
+`;
 
 // RestaurantsScreen Component
 export const RestaurantsScreen = () => {
+  const { isLoading, error, restaurants } = useContext(RestaurantsContext);
+  console.log(error);
+
   // State to manage search input
   const [searchQuery, setSearchQuery] = useState("");
 
@@ -39,7 +46,6 @@ export const RestaurantsScreen = () => {
 
   return (
     <SafeContainer>
-      {/* Search Section */}
       <SearchSection>
         <StyledSearchbar
           placeholder="Search"
@@ -47,27 +53,19 @@ export const RestaurantsScreen = () => {
           value={searchQuery} // Bind search query state
         />
       </SearchSection>
-      <RestaurantList
-        data={[
-          { name: 1 },
-          { name: 2 },
-          { name: 3 },
-          { name: 4 },
-          { name: 5 },
-          { name: 6 },
-          { name: 7 },
-          { name: 8 },
-          { name: 9 },
-          { name: 10 },
-          { name: 11 },
-          { name: 12 },
-          { name: 13 },
-          { name: 14 },
-        ]}
-        renderItem={() => <RestaurantInfo />}
-        keyExtractor={(item) => item.name}
-        contentContainerStyle={{ padding: 16 }}
-      />
+      {/* Show ActivityIndicator while loading */}
+      {isLoading ? (
+        <LoadingContainer>
+          <ActivityIndicator size="large" color="#6200EE" />
+        </LoadingContainer>
+      ) : (
+        <RestaurantList
+          data={restaurants}
+          renderItem={({ item }) => <RestaurantInfo restaurant={item} />}
+          keyExtractor={(item) => item.name}
+          contentContainerStyle={{ padding: 16 }}
+        />
+      )}
     </SafeContainer>
   );
 };

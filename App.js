@@ -19,11 +19,8 @@ import { Ionicons } from "@expo/vector-icons";
 import { SafeContainer } from "./src/components/utility/safe-container.component";
 // const isAndroid = Platform.OS === "android";
 // console.log(StatusBar.currentHeight);
-import { restaurantsRequest } from "./src/services/restaurants/mock/restaurants.service";
-
-
-
-
+import { restaurantsRequest } from "./src/services/restaurants/restaurants.service";
+import { RestaurantsContextProvider } from "./src/services/restaurants/restaurants.context";
 
 function MapScreen() {
   return (
@@ -63,7 +60,7 @@ function MyTabs() {
         },
       })}
     >
-      <Tab.Screen name="Restaurants" component={RestaurantsScreen}  />
+      <Tab.Screen name="Restaurants" component={RestaurantsScreen} />
       <Tab.Screen name="Map" component={MapScreen} />
       <Tab.Screen name="Settings" component={SettingsScreen} />
     </Tab.Navigator>
@@ -86,9 +83,11 @@ export default function Index() {
   return (
     <>
       <ThemeProvider theme={theme}>
-        <NavigationContainer>
-          <MyTabs />
-        </NavigationContainer>
+        <RestaurantsContextProvider>
+          <NavigationContainer>
+            <MyTabs />
+          </NavigationContainer>
+        </RestaurantsContextProvider>
       </ThemeProvider>
       <ExpoStatusBar style="auto" />
     </>
