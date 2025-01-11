@@ -29,6 +29,7 @@ export const AppNavigator = () => (
   <NavigationContainer>
     <Tab.Navigator
       screenOptions={({ route }) => ({
+        headerShown: false, // Hides the header above the search bar
         tabBarIcon: ({ color, size }) => {
           let iconName;
 
