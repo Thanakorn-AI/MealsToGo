@@ -17,11 +17,13 @@ import { NavigationContainer } from "@react-navigation/native";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { Ionicons } from "@expo/vector-icons";
 import { SafeContainer } from "./src/components/utility/safe-container.component";
-// const isAndroid = Platform.OS === "android";
-// console.log(StatusBar.currentHeight);
 import { restaurantsRequest } from "./src/services/restaurants/restaurants.service";
 import { RestaurantsContextProvider } from "./src/services/restaurants/restaurants.context";
+import { LocationContextProvider } from "./src/services/location/location.context";
 
+
+// const isAndroid = Platform.OS === "android";
+// console.log(StatusBar.currentHeight);
 function MapScreen() {
   return (
     <SafeContainer>
@@ -83,11 +85,13 @@ export default function Index() {
   return (
     <>
       <ThemeProvider theme={theme}>
+      <LocationContextProvider>
         <RestaurantsContextProvider>
           <NavigationContainer>
             <MyTabs />
           </NavigationContainer>
         </RestaurantsContextProvider>
+        </LocationContextProvider>
       </ThemeProvider>
       <ExpoStatusBar style="auto" />
     </>

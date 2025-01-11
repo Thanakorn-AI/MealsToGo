@@ -1,5 +1,4 @@
 import React from "react";
-import styled from "styled-components/native";
 import { Card } from "react-native-paper";
 import { SvgXml } from "react-native-svg";
 import { Text, Image, View } from "react-native";
@@ -23,10 +22,11 @@ export const RestaurantInfo = ({ restaurant = {} }) => {
     photos = [
       "https://www.sargento.com/assets/Uploads/Recipe/Image/burger_0__FillWzExNzAsNTgzXQ.jpg",
     ],
-    address = "100 some random street",
+    address = restaurant.address || "100 some random street",
     isOpenNow = true,
     rating = 4,
     isClosedTemporarily = true,
+    placeId,
   } = restaurant;
 
   const ratingArray = Array.from(new Array(Math.floor(rating)));
@@ -46,7 +46,12 @@ export const RestaurantInfo = ({ restaurant = {} }) => {
             {/* Stars */}
             <Stars>
               {ratingArray.map((_, index) => (
-                <SvgXml key={index} xml={star} width={20} height={20} />
+                <SvgXml
+                  key={`star-${placeId}-${index}`}
+                  xml={star}
+                  width={20}
+                  height={20}
+                />
               ))}
             </Stars>
 
@@ -54,7 +59,14 @@ export const RestaurantInfo = ({ restaurant = {} }) => {
             <View style={{ flexDirection: "row", alignItems: "center" }}>
               {/* Closed Temporarily Text */}
               {isClosedTemporarily && (
-                <Text style={{ color: "red", marginRight: 8, fontSize: 9, paddingTop: 10 }}>
+                <Text
+                  style={{
+                    color: "red",
+                    marginRight: 8,
+                    fontSize: 9,
+                    paddingTop: 10,
+                  }}
+                >
                   CLOSED TEMPORARILY
                 </Text>
               )}
