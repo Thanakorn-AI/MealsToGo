@@ -1,6 +1,11 @@
-import React, { useContext } from "react"; // Added useState import
+import React, { useContext } from "react";
 import styled from "styled-components/native"; // Import styled-components
-import { FlatList, ActivityIndicator, View } from "react-native";
+import {
+  FlatList,
+  ActivityIndicator,
+  View,
+  TouchableOpacity,
+} from "react-native";
 import { Search } from "../components/search.component";
 import { RestaurantInfo } from "../components/restaurant-info.component";
 import { SafeContainer } from "../../../components/utility/safe-container.component";
@@ -26,7 +31,6 @@ export const RestaurantsScreen = ({ navigation }) => {
   return (
     <SafeContainer>
       <Search />
-      {/* Show ActivityIndicator while loading */}
       {isLoading ? (
         <LoadingContainer>
           <ActivityIndicator size="large" color="#6200EE" />
@@ -34,9 +38,18 @@ export const RestaurantsScreen = ({ navigation }) => {
       ) : (
         <RestaurantList
           data={restaurants}
-          renderItem={({ item }) => <RestaurantInfo restaurant={item} />}
+          renderItem={({ item }) => (
+            <TouchableOpacity
+              onPress={() =>
+                navigation.navigate("RestaurantDetail", {
+                  restaurant: item, // Passing restaurant data
+                })
+              }
+            >
+              <RestaurantInfo restaurant={item} />
+            </TouchableOpacity>
+          )}
           keyExtractor={(item) => item.name}
-          contentContainerStyle={{ padding: 16 }}
         />
       )}
     </SafeContainer>

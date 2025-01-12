@@ -6,16 +6,10 @@ import { Text } from "react-native";
 
 import { SafeContainer } from "../../components/utility/safe-container.component";
 import { RestaurantsNavigator } from "./restaurants.navigator";
-
+import { MapScreen } from "../../features/map/screens/map.screen";
 const Tab = createBottomTabNavigator();
 
-function MapScreen() {
-  return (
-    <SafeContainer>
-      <Text>Map</Text>
-    </SafeContainer>
-  );
-}
+
 
 function SettingsScreen() {
   return (
